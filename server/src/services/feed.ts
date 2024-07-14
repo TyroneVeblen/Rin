@@ -59,14 +59,21 @@ export function FeedService() {
                         orderBy: [desc(feeds.top), desc(feeds.createdAt), desc(feeds.updatedAt)],
                         offset: page_num * limit_num,
                         limit: limit_num + 1,
-                    })).map(({ content, hashtags, summary, ...other }) => {
+                    })).map(({ content, hashtags, summary,user, ...other }) => {
                         // 提取首图
                         const avatar = extractImage(content);
+                        const modifiedUser = {
+                        ...user,
+                        username: "",
+                        avatar: ""
+                        };
+                        console.log(modifiedUser);
                         return {
+                            ...other,
                             summary: summary.length > 0 ? summary : content.length > 100 ? content.slice(0, 100) : content,
                             hashtags: hashtags.map(({ hashtag }) => hashtag),
-                            avatar,
-                            ...other
+                            user: modifiedUser,
+                            avatar
                         }
                     });
                     let hasNext = false
