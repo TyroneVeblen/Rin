@@ -262,17 +262,8 @@ export function FeedPage({ id, TOC, clean }: { id: string, TOC: () => JSX.Elemen
                       ))}
                     </div>
                   )}
-                  <div className="flex flex-row items-center">
-                    <img
-                      src={feed.user.avatar || "/avatar.png"}
-                      className="w-8 h-8 rounded-full"
-                    />
-                    <div className="ml-2">
-                      <span className="text-gray-400 text-sm cursor-default">
-                        {feed.user.username}
-                      </span>
-                    </div>
-                  </div>
+                  <p><br/></p>
+                  <p><br/></p>
                 </div>
               </article>
               {feed && <Comments id={`${feed.id}`} />}
