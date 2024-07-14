@@ -185,8 +185,14 @@ export function FeedService() {
                         return 'Permission denied';
                     }
 
-                    const { hashtags, ...other } = feed;
+                    const { hashtags, user, ...other } = feed;
                     const hashtags_flatten = hashtags.map((f) => f.hashtag);
+
+                    const modifiedUser = {
+                                            ...user,
+                                            username: "",
+                                            avatar: ""
+                                         };
 
 
                     // update visits
@@ -209,6 +215,7 @@ export function FeedService() {
                     }
                     const data = {
                         ...other,
+                        user:modifiedUser,
                         hashtags: hashtags_flatten,
                         pv,
                         uv
